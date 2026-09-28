@@ -1,0 +1,276 @@
+.kata-detail-page {
+  width: min(75vw, 1100px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2rem;
+}
+
+.kata-detail-page__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.25rem 0.35rem 0.5rem;
+}
+
+.kata-detail-page__eyebrow {
+  color: var(--primary-brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kata-detail-page__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.kata-detail-page__meta h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 3vw, 3.1rem);
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.kata-detail-page__concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.6rem;
+  margin-top: 0.1rem;
+}
+
+.kata-detail-page__concept {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.48rem;
+  border-radius: 999px;
+  background: rgba(49, 120, 198, 0.1);
+  border: 1px solid rgba(49, 120, 198, 0.18);
+  color: var(--primary-brand);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.kata-detail-page__difficulty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.85rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 223, 30, 0.4);
+  background: rgba(247, 223, 30, 0.08);
+  color: var(--primary-accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kata-detail-page__content {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.kata-detail-page__panel,
+.kata-detail-page__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.kata-detail-page__panel {
+  grid-column: 1;
+  padding: 0.5rem 1.25rem 0.5rem 0;
+  border-right: 1px solid var(--border);
+}
+
+.kata-detail-page__right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  grid-column: 2;
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+.kata-detail-page__accordion {
+  overflow: hidden;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(24, 34, 52, 0.9);
+  box-shadow: 0 12px 26px rgba(14, 22, 38, 0.2);
+}
+
+.kata-detail-page__accordion--secondary {
+  border-color: rgba(247, 223, 30, 0.35);
+  background: rgba(24, 34, 52, 0.9);
+}
+
+.kata-detail-page__accordion:not(.is-open) .kata-detail-page__accordion-panel {
+  display: none;
+}
+
+.kata-detail-page__section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.kata-detail-page__section-block h2 {
+  margin: 0;
+  color: var(--main-text);
+  font-size: clamp(1.15rem, 1.6vw, 1.55rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.kata-detail-page__section-block p,
+.kata-detail-page__list {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.kata-detail-page__list {
+  padding-left: 1.2rem;
+}
+
+.kata-detail-page__section-block code {
+  background: rgba(49, 120, 198, 0.12);
+  border-radius: 6px;
+}
+
+.kata-detail-page__code {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(14, 22, 38, 0.9);
+  overflow-x: auto;
+}
+
+.kata-detail-page__code code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  padding: 0;
+  background: transparent;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--main-text);
+}
+
+.kata-detail-page__accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.35rem;
+  padding: 0.15rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--main-text);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.kata-detail-page__accordion--secondary .kata-detail-page__accordion-trigger {
+  border: none;
+  background: transparent;
+}
+
+.kata-detail-page__accordion-trigger:hover {
+  color: var(--primary-brand);
+}
+
+.kata-detail-page__accordion-trigger:focus-visible {
+  position: relative;
+  z-index: 1;
+  border-radius: 4px;
+  outline: 2px solid var(--primary-brand);
+  outline-offset: 4px;
+}
+
+.kata-detail-page__accordion-trigger--secondary {
+  border: none;
+  background: transparent;
+}
+
+.kata-detail-page__accordion--secondary .kata-detail-page__accordion-panel {
+  border-top: 1px solid rgba(247, 223, 30, 0.15);
+  margin-top: 0.65rem;
+  padding-top: 0.8rem;
+}
+
+.kata-detail-page__accordion-icon {
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  line-height: 1;
+}
+
+.kata-detail-page__accordion-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+  padding-top: 0.7rem;
+  color: var(--muted-text);
+}
+
+@media (max-width: 900px) {
+  .kata-detail-page {
+    width: min(90vw, 1100px);
+  }
+
+  .kata-detail-page__content {
+    grid-template-columns: 1fr;
+  }
+
+  .kata-detail-page__panel,
+  .kata-detail-page__right-column {
+    grid-column: auto;
+  }
+
+  .kata-detail-page__right-column {
+    width: 100%;
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .kata-detail-page {
+    width: min(92vw, 1100px);
+    padding: 1.5rem 0.9rem 1rem;
+  }
+
+  .kata-detail-page__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kata-detail-page__panel,
+  .kata-detail-page__accordion {
+    padding: 1rem 0.95rem;
+  }
+
+  .kata-detail-page__panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}

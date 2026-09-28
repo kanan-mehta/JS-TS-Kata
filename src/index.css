@@ -1,0 +1,121 @@
+:root {
+  --primary-accent: #f7df1e;
+  --primary-brand: #3178c6;
+  --dark-base: #0e1626;
+  --surface-dark: #182234;
+  --border-stroke: #22334f;
+  --blade-highlight: #cbd5e1;
+  --text-primary: #f8fafc;
+  --text-dark-js: #1e293b;
+
+  --text: var(--text-primary);
+  --text-h: var(--text-primary);
+  --bg: var(--dark-base);
+  --border: var(--border-stroke);
+  --code-bg: rgba(49, 120, 198, 0.12);
+  --accent: var(--primary-accent);
+  --accent-bg: rgba(247, 223, 30, 0.12);
+  --accent-border: rgba(247, 223, 30, 0.45);
+  --social-bg: rgba(203, 213, 225, 0.08);
+  --shadow: rgba(14, 22, 38, 0.45) 0 18px 35px;
+
+  --main-text: var(--text-primary);
+  --muted-text: var(--blade-highlight);
+  --card-bg: var(--surface-dark);
+  --element-header: var(--primary-brand);
+  --violet: var(--primary-brand);
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--dark-base);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #182234 0%,
+    #0e1626 42%,
+    #0e1626 100%
+  );
+  color: var(--text-primary);
+  font-family: var(--sans);
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: rgba(49, 120, 198, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}

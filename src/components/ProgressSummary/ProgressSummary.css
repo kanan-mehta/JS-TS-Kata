@@ -1,0 +1,55 @@
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.progress-summary__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(24, 34, 52, 0.9);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(14, 22, 38, 0.18);
+}
+
+.progress-summary__label {
+  color: var(--muted-text);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.progress-summary__card strong {
+  color: var(--main-text);
+  font-size: clamp(1.2rem, 1.4vw, 1.7rem);
+  line-height: 1.1;
+}
+
+@media (max-width: 900px) {
+  .progress-summary {
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .progress-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .progress-summary__card {
+    padding: 0.65rem 0.55rem;
+  }
+
+  .progress-summary__label {
+    font-size: 0.58rem;
+  }
+
+  .progress-summary__card strong {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,38 @@
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: min(70vw, 980px);
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 1.5rem;
+  min-height: 0;
+  color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    width: min(88vw, 980px);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(92vw, 980px);
+    padding: 1.5rem 0.9rem 1rem;
+    gap: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .page-shell {
+    width: min(92vw, 980px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .page-shell {
+    padding: 1.5rem 0.9rem 1rem;
+  }
+}
