@@ -10,7 +10,12 @@ export type KataCategory =
   | "parsing"
   | "math";
 
-export type KataStatus = "not-started" | "in-progress" | "completed";
+export type KataStatus = "implemented" | "planned";
+
+export interface KataExample {
+  id: string;
+  code: string;
+}
 
 export interface Kata {
   id: number;
@@ -20,6 +25,10 @@ export interface Kata {
   category: KataCategory;
   concepts: string[];
   status: KataStatus;
+  description?: string;
+  examples?: KataExample[];
+  constraints?: string[];
+  notes?: string[];
 }
 
 const katas: Kata[] = [
@@ -30,8 +39,34 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["palindrome", "two-pointers", "string-normalization"],
-    status: "not-started",
+    status: "planned",
+    description:
+      "Given a string s, return true if it is a palindrome, or false otherwise.",
+    examples: [
+      {
+        id: "1",
+        code: `const isPalindrome1 = isPalindrome("racecar");
+console.log(isPalindrome1); // true`,
+      },
+      {
+        id: "2",
+        code: `const isPalindrome2 = isPalindrome("A man, a plan, a canal: Panama");
+console.log(isPalindrome2); // true`,
+      },
+    ],
+    constraints: [
+      "0 <= s.length <= 10^5",
+      "s may contain ASCII characters (letters, digits, spaces, punctuation, and symbols)",
+      "Comparison must be case-insensitive",
+      "Only alphanumeric characters (a-z, A-Z, 0-9) should be considered",
+      "An empty string is considered a valid palindrome",
+    ],
+    notes: [
+      "normalize the string by converting to lowercase",
+      "Remove non-alphanumeric characters",
+    ],
   },
+
   {
     id: 2,
     slug: "array-prototype-map",
@@ -39,7 +74,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "javascript",
     concepts: ["array-methods", "map", "callbacks", "polyfill"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 3,
@@ -48,7 +83,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "filtering", "character-matching"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 4,
@@ -57,7 +92,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "recursion", "flattening"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 5,
@@ -66,7 +101,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "javascript",
     concepts: ["functions", "closures", "timers", "debounce"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 6,
@@ -75,7 +110,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "counting", "frequency"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 7,
@@ -84,7 +119,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["trees", "recursion", "nested-data"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 8,
@@ -93,7 +128,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "pairs", "hash-map"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 9,
@@ -102,7 +137,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "search", "membership"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 10,
@@ -111,7 +146,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "optimization", "greedy"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 11,
@@ -120,7 +155,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "objects", "grouping", "reduce"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 12,
@@ -129,7 +164,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["greedy", "optimization", "combinations"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 13,
@@ -138,7 +173,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "greedy", "minimum-path"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 14,
@@ -147,7 +182,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "frequency", "hash-map"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 15,
@@ -156,7 +191,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["parsing", "strings", "file-paths"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 16,
@@ -165,7 +200,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "pairs", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 17,
@@ -174,7 +209,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["constraints", "capacity", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 18,
@@ -183,7 +218,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["conditions", "constraints", "simulation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 19,
@@ -192,7 +227,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["binary-trees", "recursion", "tree-comparison"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 20,
@@ -201,7 +236,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "mapping", "hash-map"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 21,
@@ -210,7 +245,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["trees", "recursion", "traversal"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 22,
@@ -219,7 +254,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "arrays"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 23,
@@ -228,7 +263,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "math",
     concepts: ["dates", "time", "counting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 24,
@@ -237,7 +272,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["constraints", "capacity", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 25,
@@ -246,7 +281,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["sorting", "comparison", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 26,
@@ -255,7 +290,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "dynamic-programming", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 27,
@@ -264,7 +299,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "patterns"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 28,
@@ -273,7 +308,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sets", "difference"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 29,
@@ -282,7 +317,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["palindrome", "two-pointers", "strings"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 30,
@@ -291,7 +326,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["simulation", "graphs", "traversal"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 31,
@@ -300,7 +335,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sequences", "validation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 32,
@@ -309,7 +344,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "math",
     concepts: ["time", "parsing", "fractions"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 33,
@@ -318,7 +353,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["optimization", "constraints", "search"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 34,
@@ -327,7 +362,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "comparison", "sets"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 35,
@@ -336,7 +371,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["dynamic-programming", "arrays", "pathfinding"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 36,
@@ -345,7 +380,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "patterns", "arrays"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 37,
@@ -354,7 +389,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "parsing"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 38,
@@ -363,7 +398,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["grouping", "constraints", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 39,
@@ -372,7 +407,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "math",
     concepts: ["numbers", "digits", "filtering"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 40,
@@ -381,7 +416,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sorting", "indexing"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 41,
@@ -390,7 +425,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["greedy", "capacity", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 42,
@@ -399,7 +434,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "tables"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 43,
@@ -408,7 +443,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sequences", "validation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 44,
@@ -417,7 +452,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "javascript",
     concepts: ["simulation", "instructions", "bitwise"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 45,
@@ -426,7 +461,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "pathfinding", "breadth-first-search"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 46,
@@ -435,7 +470,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sets", "frequency"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 47,
@@ -444,7 +479,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "filtering", "sets"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 48,
@@ -453,7 +488,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "comparison", "sequences"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 49,
@@ -462,7 +497,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "stacks", "recursion"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 50,
@@ -471,7 +506,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["simulation", "movement", "collision-detection"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 51,
@@ -480,7 +515,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["movement", "simulation", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 52,
@@ -489,7 +524,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "patterns", "formatting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 53,
@@ -498,7 +533,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["grouping", "capacity", "greedy"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 54,
@@ -507,7 +542,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["strings", "greedy", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 55,
@@ -516,7 +551,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "patterns", "formatting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 56,
@@ -525,7 +560,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["palindrome", "two-pointers", "swapping"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 57,
@@ -534,7 +569,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "comparison", "validation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 58,
@@ -543,7 +578,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "math",
     concepts: ["time", "parsing", "arithmetic"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 59,
@@ -552,7 +587,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["dynamic-programming", "arrays", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 60,
@@ -561,7 +596,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "movement", "obstacles"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 61,
@@ -570,7 +605,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["binary-trees", "level-order", "queues"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 62,
@@ -579,7 +614,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["sorting", "intervals", "greedy"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 63,
@@ -588,7 +623,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "patterns"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 64,
@@ -597,7 +632,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "neighbors", "counting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 65,
@@ -606,7 +641,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "neighbors", "averaging"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 66,
@@ -615,7 +650,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "prefix-sum", "hash-map"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 67,
@@ -624,7 +659,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["parsing", "commands", "state"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 68,
@@ -633,7 +668,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "grouping", "sets"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 69,
@@ -642,7 +677,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["recursion", "backtracking", "combinations"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 70,
@@ -651,7 +686,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["coordinates", "distance", "simulation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 71,
@@ -660,7 +695,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sets", "sorting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 72,
@@ -669,7 +704,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "formatting", "padding"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 73,
@@ -678,7 +713,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "grouping", "reduce"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 74,
@@ -687,7 +722,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "patterns", "formatting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 75,
@@ -696,7 +731,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "matching", "frequency"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 76,
@@ -705,7 +740,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "search", "boundaries"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 77,
@@ -714,7 +749,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "stacks", "nested-structures"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 78,
@@ -723,7 +758,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "coordinates", "rendering"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 79,
@@ -732,7 +767,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "movement", "collision-detection"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 80,
@@ -741,7 +776,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "javascript",
     concepts: ["simulation", "registers", "instructions"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 81,
@@ -750,7 +785,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["strings", "parsing", "file-names"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 82,
@@ -759,7 +794,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "math",
     concepts: ["numbers", "symbols", "parsing"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 83,
@@ -768,7 +803,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "movement", "simulation"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 84,
@@ -777,7 +812,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["arrays", "pairing", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 85,
@@ -786,7 +821,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["objects", "strings", "formatting", "tables"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 86,
@@ -795,7 +830,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["strings", "stacks", "duplicates"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 87,
@@ -804,7 +839,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "grids",
     concepts: ["grids", "neighbors", "counting"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 88,
@@ -813,7 +848,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "parsing",
     concepts: ["parsing", "strings", "objects", "search"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 89,
@@ -822,7 +857,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["greedy", "capacity", "optimization"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 90,
@@ -831,7 +866,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "comparison", "sets"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 91,
@@ -840,7 +875,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["binary-trees", "recursion", "tree-traversal"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 92,
@@ -849,7 +884,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "algorithms",
     concepts: ["recursion", "backtracking", "combinations"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 93,
@@ -858,7 +893,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "arrays",
     concepts: ["arrays", "sets", "ranges"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 94,
@@ -867,7 +902,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "trees",
     concepts: ["binary-trees", "recursion", "tree-comparison"],
-    status: "not-started",
+    status: "planned",
   },
   {
     id: 95,
@@ -876,7 +911,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "javascript",
     concepts: ["simulation", "instructions", "state"],
-    status: "not-started",
+    status: "planned",
   },
 ];
 

@@ -21,7 +21,7 @@ const CategoryProgress = () => {
 
           const completedKatas = katas.filter(
             (kata) =>
-              kata.category === categoryName && kata.status === "completed",
+              kata.category === categoryName && kata.status === "implemented",
           ).length;
           const totalKatas = katas.filter(
             (kata) => kata.category === categoryName,

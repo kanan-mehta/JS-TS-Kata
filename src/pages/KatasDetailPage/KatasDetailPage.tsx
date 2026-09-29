@@ -1,17 +1,13 @@
 import { useState } from "react";
 import "./KatasDetailPage.css";
+import katas from "../../data/kataData";
+import { useParams } from "react-router-dom";
+import { getKataAssests } from "../../lib/kataAssets";
 
 type AccordionSection = "approach" | "solution" | "tests";
 
 const KatasDetailPage = () => {
-  const exampleCode = `const isPalindrome1 = isPalindrome("racecar");
-console.log(isPalindrome1); // true
-
-const isPalindrome2 = isPalindrome(
-  "A man, a plan, a canal: Panama"
-);
-console.log(isPalindrome2); // true`;
-
+  const { slug } = useParams<{ slug: string }>();
   const [openSections, setOpenSections] = useState<
     Record<AccordionSection, boolean>
   >({
@@ -20,7 +16,24 @@ console.log(isPalindrome2); // true`;
     tests: true,
   });
 
-  const toggleSection = (section: "approach" | "solution" | "tests") => {
+  const kataMetaData = slug
+    ? katas.find((kata) => kata.slug === slug)
+    : undefined;
+
+  if (!kataMetaData) {
+    return (
+      <section className="page-shell kata-detail-page kata-detail-page--empty">
+        <div className="kata-detail-page__empty-state">
+          <span className="kata-detail-page__empty-label">Challenge</span>
+          <h1>Kata not found</h1>
+          <p>The challenge may have moved or the link may be incorrect.</p>
+        </div>
+      </section>
+    );
+  }
+  const assets = getKataAssests(kataMetaData.slug);
+
+  const toggleSection = (section: AccordionSection) => {
     setOpenSections((current) => ({
       ...current,
       [section]: !current[section],
@@ -32,13 +45,17 @@ console.log(isPalindrome2); // true`;
       <header className="kata-detail-page__header">
         <div className="kata-detail-page__eyebrow">Challenge</div>
         <div className="kata-detail-page__meta">
-          <h1>Valid Palindrome</h1>
+          <h1>{kataMetaData.title}</h1>
           <span className="kata-detail-page__difficulty">Easy</span>
         </div>
         <div className="kata-detail-page__concepts" aria-label="Concepts">
-          <span className="kata-detail-page__concept">strings</span>
-          <span className="kata-detail-page__concept">two pointers</span>
-          <span className="kata-detail-page__concept">palindrome</span>
+          {kataMetaData.concepts.map((concept, index) => {
+            return (
+              <span className="kata-detail-page__concept" key={index}>
+                {concept}
+              </span>
+            );
+          })}
         </div>
       </header>
 
@@ -46,50 +63,46 @@ console.log(isPalindrome2); // true`;
         <section className="kata-detail-page__panel">
           <div className="kata-detail-page__section-block">
             <h2>Problem</h2>
-            <p>
-              Given a string <code>s</code>, return <code>true</code> if it is a
-              palindrome, or <code>false</code> otherwise.
-            </p>
+            <p>{kataMetaData.description}</p>
           </div>
 
-          <div className="kata-detail-page__section-block">
-            <h2>Examples</h2>
+          {kataMetaData.examples && kataMetaData.examples.length > 0 && (
+            <div className="kata-detail-page__section-block">
+              <h2>Examples</h2>
+              <pre className="kata-detail-page__code">
+                {kataMetaData.examples.map((example) => {
+                  return <code key={example.id}>{example.code}</code>;
+                })}
+              </pre>
+            </div>
+          )}
 
-            <pre className="kata-detail-page__code">
-              <code>{exampleCode}</code>
-            </pre>
-          </div>
+          {kataMetaData.constraints && kataMetaData.constraints.length > 0 && (
+            <div className="kata-detail-page__section-block">
+              <h2>Constraints</h2>
+              <ul className="kata-detail-page__list">
+                {kataMetaData.constraints.map((constraint, index) => {
+                  return <li key={index}>{constraint}</li>;
+                })}
+              </ul>
+            </div>
+          )}
 
-          <div className="kata-detail-page__section-block">
-            <h2>Constraints</h2>
-            <ul className="kata-detail-page__list">
-              <li>0 &lt;= s.length &lt;= 10^5</li>
-              <li>
-                s may contain ASCII characters (letters, digits, spaces,
-                punctuation, and symbols)
-              </li>
-              <li>Comparison must be case-insensitive</li>
-              <li>
-                Only alphanumeric characters (a-z, A-Z, 0-9) should be
-                considered
-              </li>
-              <li>An empty string is considered a valid palindrome</li>
-            </ul>
-          </div>
-
-          <div className="kata-detail-page__section-block">
-            <h2>Notes</h2>
-            <ul className="kata-detail-page__list">
-              <li>You can normalize the string by:</li>
-              <li>Converting it to lowercase</li>
-              <li>Removing non-alphanumeric characters</li>
-            </ul>
-          </div>
+          {kataMetaData.notes && kataMetaData.notes.length > 0 && (
+            <div className="kata-detail-page__section-block">
+              <h2>Notes</h2>
+              <ul className="kata-detail-page__list">
+                {kataMetaData.notes.map((note, index) => {
+                  return <li key={index}>{note}</li>;
+                })}
+              </ul>
+            </div>
+          )}
         </section>
 
         <div className="kata-detail-page__right-column">
           <section
-            className={`kata-detail-page__accordion ${openSections.approach ? "is-open" : ""}`}
+            className={`kata-detail-page__accordion kata-detail-page__accordion--approach ${openSections.approach ? "is-open" : ""}`}
           >
             <button
               type="button"
@@ -111,10 +124,11 @@ console.log(isPalindrome2); // true`;
                 role="region"
                 aria-labelledby="accordion-approach-trigger"
               >
-                <p>
-                  Use two pointers or normalize the string and compare
-                  characters while ignoring non-alphanumeric values.
-                </p>
+                <ol>
+                  {assets.approach.steps.map((step, index) => {
+                    return <li key={index}>{step}</li>;
+                  })}
+                </ol>
               </div>
             )}
           </section>
@@ -142,7 +156,9 @@ console.log(isPalindrome2); // true`;
                 role="region"
                 aria-labelledby="accordion-solution-trigger"
               >
-                <p>Solution details will appear here when unlocked.</p>
+                <pre>
+                  <code>{assets.solutionCode}</code>
+                </pre>
               </div>
             )}
           </section>
@@ -170,7 +186,23 @@ console.log(isPalindrome2); // true`;
                 role="region"
                 aria-labelledby="accordion-tests-trigger"
               >
-                <p>Tests have not been run yet.</p>
+                <ul className="kata-detail-page__test-cases">
+                  {assets.cases.map((testCase, index) => (
+                    <li key={index} className="kata-detail-page__test-case">
+                      <span>Case {index + 1}</span>
+
+                      <div>
+                        <strong>Input</strong>
+                        <code>{JSON.stringify(testCase.input)}</code>
+                      </div>
+
+                      <div>
+                        <strong>Expected output</strong>
+                        <code>{JSON.stringify(testCase.expected)}</code>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </section>

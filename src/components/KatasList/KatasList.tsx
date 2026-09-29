@@ -34,17 +34,18 @@ const KatasList = ({ category = "all" }: KataListProps) => {
 
               <div className="kata-list__concepts" aria-label="Concepts">
                 {kataDetail.concepts.map((concept) => (
-                  <a
-                    key={concept}
-                    //   href={getMdnConceptUrl(concept)}
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="kata-list__concept"
-                    aria-label={`${concept} on MDN`}
-                  >
-                    {concept}
-                  </a>
+                  //   <a
+                  //     key={concept}
+                  //     //   href={getMdnConceptUrl(concept)}
+                  //     href="#"
+                  //     target="_blank"
+                  //     rel="noreferrer"
+                  //     className="kata-list__concept"
+                  //     aria-label={`${concept} on MDN`}
+                  //   >
+                  //     {concept}
+                  //   </a>
+                  <p className="kata-list__concept">{concept}</p>
                 ))}
               </div>
 
