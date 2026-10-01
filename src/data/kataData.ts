@@ -1,35 +1,12 @@
-export type KataLanguage = "javascript" | "typescript";
+import type { Kata } from "../types/kata";
 
-export type KataCategory =
-  | "strings"
-  | "arrays"
-  | "javascript"
-  | "algorithms"
-  | "trees"
-  | "grids"
-  | "parsing"
-  | "math";
-
-export type KataStatus = "implemented" | "planned";
-
-export interface KataExample {
-  id: string;
-  code: string;
-}
-
-export interface Kata {
-  id: number;
-  slug: string;
-  title: string;
-  language: KataLanguage;
-  category: KataCategory;
-  concepts: string[];
-  status: KataStatus;
-  description?: string;
-  examples?: KataExample[];
-  constraints?: string[];
-  notes?: string[];
-}
+export type {
+  Kata,
+  KataCategory,
+  KataExample,
+  KataLanguage,
+  KataStatus,
+} from "../types/kata";
 
 const katas: Kata[] = [
   {
@@ -39,7 +16,7 @@ const katas: Kata[] = [
     language: "javascript",
     category: "strings",
     concepts: ["palindrome", "two-pointers", "string-normalization"],
-    status: "planned",
+    status: "implemented",
     description:
       "Given a string s, return true if it is a palindrome, or false otherwise.",
     examples: [

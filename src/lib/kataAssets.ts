@@ -1,11 +1,6 @@
-export interface KataApproach {
-  steps: string[];
-}
+import type { KataApproach, KataCase, KataSolution } from "../types/kata";
 
-export interface KataCase {
-  input: unknown[];
-  expected: unknown;
-}
+export type { KataApproach, KataCase, KataSolution } from "../types/kata";
 
 const approachModules = import.meta.glob<KataApproach>(
   "/src/katas/**/approach.ts",
@@ -15,10 +10,13 @@ const approachModules = import.meta.glob<KataApproach>(
   },
 );
 
-const solutionModules = import.meta.glob("/src/katas/**/solution.ts", {
-  eager: true,
-  import: "default",
-});
+const solutionModules = import.meta.glob<KataSolution>(
+  "/src/katas/**/solution.ts",
+  {
+    eager: true,
+    import: "default",
+  },
+);
 
 const solutionCodeModules = import.meta.glob("/src/katas/**/solution.ts", {
   eager: true,
@@ -31,7 +29,7 @@ const casesModules = import.meta.glob<KataCase[]>("/src/katas/**/cases.ts", {
   import: "cases",
 });
 
-export const getKataAssests = (slug: string) => {
+export const getKataAssets = (slug: string) => {
   const basePath = `/src/katas/${slug}`;
 
   return {

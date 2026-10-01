@@ -1,0 +1,108 @@
+.kata-detail-page__test-cases {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kata-detail-page__test-case {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 1rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(247, 223, 30, 0.22);
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 223, 30, 0.05),
+    rgba(14, 22, 38, 0.65)
+  );
+}
+
+.kata-detail-page__test-case > span {
+  grid-column: 1 / -1;
+  color: var(--primary-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.kata-detail-page__test-case > div {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.kata-detail-page__test-case strong {
+  color: var(--muted-text);
+  font-size: 0.72rem;
+}
+
+.kata-detail-page__test-case code {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 0.35rem 0.5rem;
+  background: rgba(247, 223, 30, 0.08);
+  color: var(--main-text);
+  font-size: 0.75rem;
+}
+
+.kata-test-results__run-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(247, 223, 30, 0.28);
+  border-radius: 10px;
+  background: rgba(247, 223, 30, 0.1);
+  color: var(--primary-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.kata-test-results__run-button:hover:not(:disabled),
+.kata-test-results__run-button:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(247, 223, 30, 0.45);
+  box-shadow: 0 10px 18px rgba(247, 223, 30, 0.08);
+  outline: none;
+}
+
+.kata-test-results__run-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.kata-test-results__spinner {
+  flex-shrink: 0;
+  animation: kata-test-spinner 0.8s linear infinite;
+}
+
+@keyframes kata-test-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kata-test-results__spinner {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .kata-detail-page__test-case {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

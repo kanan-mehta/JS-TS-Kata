@@ -1,0 +1,102 @@
+.kata-test-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(247, 223, 30, 0.18);
+}
+
+.kata-test-results__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.kata-test-results__header h3 {
+  margin: 0;
+  color: var(--main-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.kata-test-results__header span {
+  color: var(--primary-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.kata-test-results__list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kata-test-results__item {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(247, 223, 30, 0.16);
+  border-radius: 10px;
+  background: rgba(14, 22, 38, 0.5);
+}
+
+.kata-test-results__item--passed {
+  border-color: rgba(49, 120, 198, 0.28);
+}
+
+.kata-test-results__item--failed {
+  border-color: rgba(247, 223, 30, 0.32);
+}
+
+.kata-test-results__case {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--main-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.kata-test-results__case span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.kata-test-results__item--passed .kata-test-results__case span {
+  background: rgba(49, 120, 198, 0.14);
+  color: var(--primary-brand);
+}
+
+.kata-test-results__item--failed .kata-test-results__case span {
+  background: rgba(247, 223, 30, 0.12);
+  color: var(--primary-accent);
+}
+
+.kata-test-results__item strong {
+  color: var(--muted-text);
+  font-size: 0.72rem;
+}
+
+.kata-test-results__item code {
+  display: block;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(49, 120, 198, 0.08);
+  color: var(--main-text);
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+}

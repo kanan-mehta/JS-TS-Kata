@@ -2,10 +2,12 @@
 import { Link } from "react-router-dom";
 // import { Search, Filter, ArrowUpDown } from "lucide-react";
 import katas from "../../data/kataData";
+import type { Kata } from "../../types/kata";
 import "./KatasList.css";
 
 type KataListProps = {
   category?: string;
+  katasToDisplay?: Kata[];
 };
 
 // type StatusFilter = "all" | "not-started" | "in-progress" | "completed";
@@ -14,16 +16,19 @@ type KataListProps = {
 // const getMdnConceptUrl = (concept: string) =>
 //   `https://developer.mozilla.org/en-US/search?q=${encodeURIComponent(concept)}`;
 
-const KatasList = ({ category = "all" }: KataListProps) => {
+const KatasList = ({
+  category = "all",
+  katasToDisplay = katas,
+}: KataListProps) => {
   return (
     <section className="kata-list" aria-label="Kata list">
       <ul className="kata-list__list">
-        {katas.map((kataDetail) => (
-          <li key={kataDetail.id} className="kata-list__item">
-            <Link
-              to={`/katas/${category}/${kataDetail.slug}`}
-              className="kata-list__link"
-            >
+        {katasToDisplay.length === 0 && (
+          <li className="kata-list__empty">No katas match your search.</li>
+        )}
+        {katasToDisplay.map((kataDetail) => {
+          const rowContent = (
+            <>
               <span className="kata-list__number">
                 #{String(kataDetail.id).padStart(2, "0")}
               </span>
@@ -34,18 +39,9 @@ const KatasList = ({ category = "all" }: KataListProps) => {
 
               <div className="kata-list__concepts" aria-label="Concepts">
                 {kataDetail.concepts.map((concept) => (
-                  //   <a
-                  //     key={concept}
-                  //     //   href={getMdnConceptUrl(concept)}
-                  //     href="#"
-                  //     target="_blank"
-                  //     rel="noreferrer"
-                  //     className="kata-list__concept"
-                  //     aria-label={`${concept} on MDN`}
-                  //   >
-                  //     {concept}
-                  //   </a>
-                  <p className="kata-list__concept">{concept}</p>
+                  <p className="kata-list__concept" key={concept}>
+                    {concept}
+                  </p>
                 ))}
               </div>
 
@@ -54,9 +50,35 @@ const KatasList = ({ category = "all" }: KataListProps) => {
               >
                 {kataDetail.status.replace("-", " ")}
               </span>
-            </Link>
-          </li>
-        ))}
+            </>
+          );
+          const isImplemented = kataDetail.status === "implemented";
+
+          return (
+            <li
+              key={kataDetail.id}
+              className={`kata-list__item ${
+                isImplemented ? "" : "kata-list__item--disabled"
+              }`}
+            >
+              {isImplemented ? (
+                <Link
+                  to={`/katas/${category}/${kataDetail.slug}`}
+                  className="kata-list__link"
+                >
+                  {rowContent}
+                </Link>
+              ) : (
+                <div
+                  className="kata-list__link kata-list__link--disabled"
+                  aria-disabled="true"
+                >
+                  {rowContent}
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

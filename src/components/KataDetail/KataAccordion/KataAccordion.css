@@ -1,0 +1,186 @@
+.kata-detail-page__right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  grid-column: 2;
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+.kata-detail-page__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card-bg);
+  box-shadow: 0 14px 28px rgba(14, 22, 38, 0.28);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.kata-detail-page__accordion:hover {
+  border-color: rgba(49, 120, 198, 0.4);
+  box-shadow: 0 18px 32px rgba(14, 22, 38, 0.35);
+}
+
+.kata-detail-page__accordion--approach,
+.kata-detail-page__accordion--solution {
+  border-color: var(--border);
+}
+
+.kata-detail-page__accordion--tests {
+  border-color: rgba(247, 223, 30, 0.32);
+  background: linear-gradient(
+    180deg,
+    rgba(247, 223, 30, 0.06),
+    rgba(24, 34, 52, 0.86)
+  );
+}
+
+.kata-detail-page__accordion--tests:hover {
+  border-color: rgba(247, 223, 30, 0.52);
+}
+
+.kata-detail-page__accordion:not(.is-open) .kata-detail-page__accordion-panel {
+  display: none;
+}
+
+.kata-detail-page__accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.1rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--main-text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.kata-detail-page__accordion-trigger:hover {
+  color: var(--element-header);
+}
+
+.kata-detail-page__accordion-trigger:focus-visible {
+  position: relative;
+  z-index: 1;
+  border-radius: 4px;
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 4px;
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-trigger {
+  color: var(--primary-accent);
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-trigger:hover,
+.kata-detail-page__accordion--tests
+  .kata-detail-page__accordion-trigger:focus-visible {
+  color: var(--primary-accent);
+}
+
+.kata-detail-page__accordion-trigger--approach,
+.kata-detail-page__accordion-trigger--solution,
+.kata-detail-page__accordion-trigger--tests {
+  border: none;
+  background: transparent;
+}
+
+.kata-detail-page__accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--element-header);
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-icon {
+  border-color: rgba(247, 223, 30, 0.38);
+  background: rgba(247, 223, 30, 0.08);
+  color: var(--primary-accent);
+}
+
+.kata-detail-page__accordion-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+  padding-top: 0.75rem;
+  color: var(--muted-text);
+  line-height: 1.65;
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-panel {
+  border-top: 1px solid rgba(247, 223, 30, 0.22);
+  margin-top: 0.25rem;
+  padding-top: 0.9rem;
+  background: rgba(14, 22, 38, 0.2);
+}
+
+.kata-detail-page__accordion-panel ol {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.kata-detail-page__accordion--approach .kata-detail-page__accordion-panel li {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.kata-detail-page__accordion-panel li::marker {
+  color: var(--primary-brand);
+}
+
+.kata-detail-page__accordion-panel pre {
+  max-width: 100%;
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--dark-base);
+  color: var(--main-text);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  white-space: pre;
+}
+
+.kata-detail-page__accordion-panel pre code {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  white-space: pre;
+}
+
+@media (max-width: 900px) {
+  .kata-detail-page__right-column {
+    width: 100%;
+    position: static;
+  }
+}

@@ -10,7 +10,7 @@ const ProgressSummary = () => {
     return acc;
   }, {});
   const totalCompleted = katas.filter(
-    (kata) => kata.status === "completed",
+    (kata) => kata.status === "implemented",
   ).length;
   const totalChallenges = katas.length;
   const totalConcepts = Object.keys(categoryCounts).length;

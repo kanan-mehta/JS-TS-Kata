@@ -17,6 +17,27 @@
   padding: 0.5rem 0.25rem 0;
 }
 
+.kata-detail-page__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kata-detail-page__back-link:hover,
+.kata-detail-page__back-link:focus-visible {
+  color: var(--primary-accent);
+}
+
+.kata-detail-page__back-link:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 3px;
+}
+
 .kata-detail-page__eyebrow {
   color: var(--muted-text);
   font-size: 0.75rem;
@@ -129,12 +150,17 @@
   box-shadow: 0 18px 32px rgba(14, 22, 38, 0.35);
 }
 
-.kata-detail-page__accordion--secondary {
-  border-color: rgba(247, 223, 30, 0.3);
+.kata-detail-page__accordion--tests {
+  border-color: rgba(247, 223, 30, 0.32);
+  background: linear-gradient(
+    180deg,
+    rgba(247, 223, 30, 0.06),
+    rgba(24, 34, 52, 0.86)
+  );
 }
 
-.kata-detail-page__accordion--secondary:hover {
-  border-color: rgba(247, 223, 30, 0.55);
+.kata-detail-page__accordion--tests:hover {
+  border-color: rgba(247, 223, 30, 0.52);
 }
 
 .kata-detail-page__accordion:not(.is-open) .kata-detail-page__accordion-panel {
@@ -222,13 +248,18 @@
   transition: color 0.2s ease;
 }
 
-.kata-detail-page__accordion--secondary .kata-detail-page__accordion-trigger {
-  border: none;
-  background: transparent;
-}
-
 .kata-detail-page__accordion-trigger:hover {
   color: var(--element-header);
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-trigger {
+  color: var(--primary-accent);
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-trigger:hover,
+.kata-detail-page__accordion--tests
+  .kata-detail-page__accordion-trigger:focus-visible {
+  color: var(--primary-accent);
 }
 
 .kata-detail-page__accordion-trigger:focus-visible {
@@ -239,15 +270,16 @@
   outline-offset: 4px;
 }
 
-.kata-detail-page__accordion-trigger--secondary {
+.kata-detail-page__accordion-trigger--tests {
   border: none;
   background: transparent;
 }
 
-.kata-detail-page__accordion--secondary .kata-detail-page__accordion-panel {
-  border-top: 1px solid rgba(247, 223, 30, 0.2);
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-panel {
+  border-top: 1px solid rgba(247, 223, 30, 0.22);
   margin-top: 0.25rem;
   padding-top: 0.9rem;
+  background: rgba(14, 22, 38, 0.2);
 }
 
 .kata-detail-page__accordion-icon {
@@ -262,6 +294,12 @@
   font-size: 1.1rem;
   line-height: 1;
   flex-shrink: 0;
+}
+
+.kata-detail-page__accordion--tests .kata-detail-page__accordion-icon {
+  border-color: rgba(247, 223, 30, 0.38);
+  background: rgba(247, 223, 30, 0.08);
+  color: var(--primary-accent);
 }
 
 .kata-detail-page__accordion-panel {
@@ -324,9 +362,13 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.65rem 1rem;
   padding: 0.85rem;
-  border: 1px solid rgba(247, 223, 30, 0.16);
+  border: 1px solid rgba(247, 223, 30, 0.22);
   border-radius: 10px;
-  background: rgba(14, 22, 38, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(247, 223, 30, 0.05),
+    rgba(14, 22, 38, 0.65)
+  );
 }
 
 .kata-detail-page__test-case > span {
