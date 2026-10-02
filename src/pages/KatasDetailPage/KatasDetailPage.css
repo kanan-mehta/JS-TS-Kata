@@ -447,12 +447,12 @@
   }
 
   .kata-detail-page__content {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .kata-detail-page__panel,
-  .kata-detail-page__right-column {
-    grid-column: auto;
+  .kata-detail-page__content > .kata-detail-page__panel,
+  .kata-detail-page__content > .kata-detail-page__right-column {
+    grid-column: 1 / -1;
   }
 
   .kata-detail-page__right-column {
