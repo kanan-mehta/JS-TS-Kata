@@ -1,0 +1,60 @@
+.react-challenge-footer {
+  position: relative;
+  padding: 0.9rem 1.25rem;
+  border-top: 1px solid var(--border-stroke);
+  background: var(--dark-base);
+  color: var(--text-primary);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1.5rem;
+  color: var(--muted-text);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-accent);
+}
+
+.footer-links a:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .react-challenge-footer {
+    padding: 0.85rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .footer-links {
+    gap: 0.85rem;
+  }
+}
